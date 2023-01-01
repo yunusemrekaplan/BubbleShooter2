@@ -2,17 +2,18 @@ package Balls;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageInputStream;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Ball {
+public abstract class Ball extends JComponent {
     private BufferedImage image;
     private int width;
     private int height;
-    private String varlik = "2.png";
+    private String varlik;
 
     public Ball(int width, int height, String varlik) {
         this.width = width;
@@ -46,5 +47,13 @@ public class Ball {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public String getVarlik() {
+        return varlik;
+    }
+
+    public void setVarlik(String varlik) {
+        this.varlik = varlik;
     }
 }

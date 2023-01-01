@@ -1,4 +1,4 @@
-package Shooters;
+package Balls;
 
 import Balls.*;
 
@@ -7,8 +7,9 @@ import java.util.Random;
 
 public class ShooterBalls {
     Random random = new Random();
-    private ArrayList<Ball> balls;
-    private ArrayList<Integer> ballsIndex;
+    private int size = 3;
+    private ArrayList<Ball> balls = new ArrayList<>();
+    private ArrayList<Integer> ballsIndex = new ArrayList<>();
 
     public ShooterBalls() {
         ballsArray();
@@ -19,10 +20,8 @@ public class ShooterBalls {
     }
 
     public void ballsArray() {
-        ArrayList<Ball> balls = new ArrayList<>();
-        ArrayList<Integer> ballsIndex = new ArrayList<>();
         int index = 0;
-        for(int i=0; i<7; i++) {
+        for(int i=0; i<size; i++) {
             index = randomIndex();
             if(index == 0) {
                 balls.add(new Ball1(35,35, "1.png"));
@@ -52,8 +51,14 @@ public class ShooterBalls {
                 System.out.println("index: "+index);
             }
         }
-        this.balls = balls;
-        this.ballsIndex = ballsIndex;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public ArrayList<Ball> getBalls() {

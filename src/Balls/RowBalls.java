@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class RowBalls {
-    Random random = new Random();
-    private ArrayList<Ball> balls;
-    private ArrayList<Integer> ballsIndex;
+    private Random random = new Random();
+    private ArrayList<Ball> balls = new ArrayList<>();
+    private ArrayList<Integer> ballsIndex = new ArrayList<>();
 
     public RowBalls(String rowType) {
         if(rowType == "Full") {
@@ -25,8 +25,6 @@ public class RowBalls {
     }
 
     public void ballsArray() {
-        ArrayList<Ball> balls = new ArrayList<>();
-        ArrayList<Integer> ballsIndex = new ArrayList<>();
         int index = 0;
         for(int i=0; i<22; i++) {
             index = randomIndex();
@@ -55,17 +53,13 @@ public class RowBalls {
                 ballsIndex.add(index);
             }
             else {
-                System.out.println("index: "+index);
+                System.out.println("index: "+ index);
             }
         }
-        this.balls = balls;
-        this.ballsIndex = ballsIndex;
     }
 
     public void randomBallsArray() {
-        ArrayList<Ball> balls = new ArrayList<>();
-        ArrayList<Integer> ballsIndex = new ArrayList<>();
-        boolean control;
+        boolean control = false;
         int index = 0;
         for(int i=0; i<22; i++) {
             control = randomBool();
@@ -125,11 +119,9 @@ public class RowBalls {
                 }
             }
             else {
-                System.out.println("index: "+index);
+                System.out.println("index: "+ index);
             }
         }
-        this.balls = balls;
-        this.ballsIndex = ballsIndex;
     }
 
     public ArrayList<Ball> getBalls() {
@@ -146,5 +138,13 @@ public class RowBalls {
 
     public void setBallsIndex(ArrayList<Integer> ballsIndex) {
         this.ballsIndex = ballsIndex;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
     }
 }

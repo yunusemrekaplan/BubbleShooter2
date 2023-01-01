@@ -1,10 +1,12 @@
-package Mains;
+package Panels;
 
 import Balls.*;
+import Printers.*;
 
+import javax.swing.*;
 import java.awt.*;
 
-public class Row extends MainPanel {
+public class Row extends JPanel implements RowPrinter {
     private int x;
     private int y;
     private int width;
@@ -17,12 +19,40 @@ public class Row extends MainPanel {
         this.width = width;
         this.height = height;
         this.rowBalls = rowBalls;
-        this.setBounds(x,y,width,height);
-        this.setBackground(Color.pink);
+        setBackground(Color.PINK);
+        setBounds(x,y,width,height);
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        for(int i=0; i<rowBalls.getBalls().size(); i++) {
+            if(rowBalls.getBallsIndex().get(i) != -1) {
+                g.drawImage(rowBalls.getBalls().get(i).getImage(),i*35,0,35,35,this);
+            }
+        }
+    }
+
+    @Override
+    public void drawAgain(Graphics g) {
+        for(int i=0; i<rowBalls.getBalls().size(); i++) {
+            if(rowBalls.getBallsIndex().get(i) != -1) {
+                g.drawImage(rowBalls.getBalls().get(i).getImage(),i*35,0,35,35,this);
+            }
+        }
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        draw(g);
+    }
+
+    @Override
+    public void repaint() {
+        super.repaint();
     }
 
 
-    @Override
     public int getX() {
         return x;
     }
@@ -31,7 +61,6 @@ public class Row extends MainPanel {
         this.x = x;
     }
 
-    @Override
     public int getY() {
         return y;
     }
@@ -40,7 +69,6 @@ public class Row extends MainPanel {
         this.y = y;
     }
 
-    @Override
     public int getWidth() {
         return width;
     }
@@ -49,7 +77,6 @@ public class Row extends MainPanel {
         this.width = width;
     }
 
-    @Override
     public int getHeight() {
         return height;
     }
