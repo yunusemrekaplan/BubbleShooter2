@@ -11,7 +11,7 @@ public class Main {
         GameEngine gameEngine = new GameEngine("Bubble Shooter", mainPanel);
         gameEngine.setVisible(true);
 
-        GameThread gameThread = new GameThread(gameEngine, gameEngine);
+        GameThread gameThread = new GameThread(gameEngine);
         gameThread.start();
     }
 }

@@ -3,12 +3,10 @@ package Mains;
 import javax.swing.*;
 
 public class GameThread extends Thread {
-    private JFrame frame;
     private GameEngine gameEngine;
 
-    public GameThread(JFrame frame, GameEngine gameEngine) {
+    public GameThread(GameEngine gameEngine) {
         super();
-        this.frame = frame;
         this.gameEngine = gameEngine;
     }
 
@@ -16,7 +14,7 @@ public class GameThread extends Thread {
 
         while (true) {
             gameEngine.setVisible(true);
-            frame.repaint();
+            gameEngine.repaint();
             gameEngine.update();
 
 

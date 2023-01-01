@@ -1,5 +1,6 @@
 package Mains;
 
+import Balls.ShooterBalls;
 import Panels.*;
 import Shooters.*;
 
@@ -12,6 +13,8 @@ public class GameEngine extends JFrame implements MouseListener {
     private int updateCount;
     private int indexBallCount;
     private int indexRowCount;
+    private int mouseX;
+    private int mouseY;
     private boolean control;
     private MainPanel mainPanel;
     private Shooter shooter;
@@ -23,7 +26,14 @@ public class GameEngine extends JFrame implements MouseListener {
         indexRowCount = 0;
         indexBallCount = 0;
         this.mainPanel = mainPanel;
+        this.shooter = new Shooter(
+                0,
+                560,
+                787,
+                35
+        );
         this.add(mainPanel);
+        this.mainPanel.add(shooter);
         this.setBackground(Color.PINK);
         this.setResizable(false);
         this.setFocusable(false);
@@ -36,8 +46,9 @@ public class GameEngine extends JFrame implements MouseListener {
     public boolean nextRow() {
         return clickCount == 3;
     }
-    public void update() {
+    public void updateRow() {
         if(nextRow()) {
+            shooter.setShooterBalls(new ShooterBalls());
             System.out.println("Satır kaydır");
             clickCount = 0;
 
@@ -48,8 +59,12 @@ public class GameEngine extends JFrame implements MouseListener {
             }
         }
     }
+    public void update() {
+        updateRow();
 
-    public void checkControls() {
+    }
+
+    public void checkControlsDelete() {
         if(clickCount != updateCount && control) {
             // çarpan topları silecek olan kod blogu.
             indexBallCount = indexRowCount > 21 ? 0 : indexRowCount;
@@ -63,12 +78,18 @@ public class GameEngine extends JFrame implements MouseListener {
         updateCount = clickCount;
         control = false;
     }
+    public void checkControls() {
+        checkControlsDelete();
+    }
 
 
     @Override
     public void mousePressed(MouseEvent e) {
         clickCount++;
+        mouseX = e.getX();
+        mouseY = e.getY();
         control = true;
+        shooter.setShootCount(clickCount);
     }
 
     public int getClickCount() {
