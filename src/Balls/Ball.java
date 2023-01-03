@@ -1,5 +1,6 @@
 package Balls;
 
+// Top sınıfı.
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageInputStream;
 import javax.swing.*;

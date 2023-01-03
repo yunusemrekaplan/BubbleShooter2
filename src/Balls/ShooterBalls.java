@@ -1,6 +1,6 @@
 package Balls;
 
-import Balls.*;
+// Shootera ait toplar bu sınıfta yaratılır. Her üç atıştan sonra bu sınıftan yeni bir nesne oluşturulur.
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -8,8 +8,8 @@ import java.util.Random;
 public class ShooterBalls {
     Random random = new Random();
     private int size = 3;
-    private ArrayList<Ball> balls = new ArrayList<>();
-    private ArrayList<Integer> ballsIndex = new ArrayList<>();
+    private ArrayList<Ball> balls = new ArrayList<>(); // Topları tutacak liste.
+    private ArrayList<Integer> ballsIndex = new ArrayList<>(); // Topların indeksini tutacak sınıf.
 
     public ShooterBalls() {
         ballsArray();

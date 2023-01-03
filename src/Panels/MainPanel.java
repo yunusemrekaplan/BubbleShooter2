@@ -7,11 +7,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class MainPanel extends JPanel {
-    private ArrayList<Row> rows;
+    private ArrayList<Row> rows = new ArrayList<>();
     private int countY;
-    public MainPanel(ArrayList<Row> rows) {
+    public MainPanel() {
         super();
-        this.rows = rows;
         this.requestFocus();
         this.setFocusable(true);
         setBackground(Color.PINK);

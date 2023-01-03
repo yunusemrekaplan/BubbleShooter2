@@ -33,15 +33,6 @@ public class Row extends JPanel implements RowPrinter {
     }
 
     @Override
-    public void drawAgain(Graphics g) {
-        for(int i=0; i<rowBalls.getBalls().size(); i++) {
-            if(rowBalls.getBallsIndex().get(i) != -1) {
-                g.drawImage(rowBalls.getBalls().get(i).getImage(),i*35,0,35,35,this);
-            }
-        }
-    }
-
-    @Override
     public void paint(Graphics g) {
         super.paint(g);
         draw(g);

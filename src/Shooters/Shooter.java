@@ -1,12 +1,13 @@
 package Shooters;
 
 import Balls.ShooterBalls;
+import Mains.GameEngine;
 import Printers.ShooterPrinter;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Shooter extends JComponent implements ShooterPrinter {
+public class Shooter extends JPanel implements ShooterPrinter {
     private int x; //= 385;
     private int y; //= 560;
     private int width;
@@ -14,25 +15,36 @@ public class Shooter extends JComponent implements ShooterPrinter {
     private int speed;
     private int shootCount;
     private ShooterBalls shooterBalls;
+    private GameEngine gameEngine;
 
-    public Shooter(int x, int y, int width, int height) {
+    public Shooter(int x, int y, int width, int height, GameEngine gameEngine) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.shooterBalls = new ShooterBalls();
+        this.gameEngine = gameEngine;
         this.setBackground(Color.PINK);
         shootCount = 0;
         speed = 1;
     }
 
-    /*
-    public void shoot() {
-        if(shootCount == 1) {
 
+    public void shoot(Graphics g, int mouseX, int mouseY) {
+        int tempX = mouseX / 35;
+        int tempY = mouseY / 35;
+
+        if(shootCount == 1) {
+            shooterBalls.getBalls().get(0).setBounds(tempX*35, tempY*35, 35, 35);
+        }
+        else if(shootCount == 2) {
+            shooterBalls.getBalls().get(1).setBounds(tempX*35, tempY*35, 35, 35);
+        }
+        else if(shootCount == 3) {
+            shooterBalls.getBalls().get(2).setBounds(tempX*35, tempY*35, 35, 35);
         }
     }
-     */
+
     @Override
     public void drawMain(Graphics g) {
         g.drawImage(shooterBalls.getBalls().get(0).getImage(), 350, 0, 35, 35, this);
@@ -58,6 +70,7 @@ public class Shooter extends JComponent implements ShooterPrinter {
     public void paint(Graphics g) {
         super.paint(g);
         draw(g);
+        shoot(g, gameEngine.getMouseX(), gameEngine.getMouseY());
     }
 
     @Override

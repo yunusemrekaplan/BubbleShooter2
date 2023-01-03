@@ -2,7 +2,6 @@ package Printers;
 
 import java.awt.*;
 
-public interface ShooterPrinter {
+public interface ShooterPrinter extends Printer{
     void drawMain(Graphics g);
-    void draw(Graphics g);
 }

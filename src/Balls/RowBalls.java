@@ -1,12 +1,14 @@
 package Balls;
 
+// Satırdaki topları tutan sınıf. Her satır için bu sınıftan yeni nesne oluşturulur.
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class RowBalls {
     private Random random = new Random();
-    private ArrayList<Ball> balls = new ArrayList<>();
-    private ArrayList<Integer> ballsIndex = new ArrayList<>();
+    private ArrayList<Ball> balls = new ArrayList<>(); // Topları tutacak liste.
+    private ArrayList<Integer> ballsIndex = new ArrayList<>(); // Topların indeksini tutacak sınıf.
 
     public RowBalls(String rowType) {
         if(rowType == "Full") {
